@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _myRigidbody;
     private Animator _myAnimator;
     private float _horizontalAxisValue;
+    private float _direction;
     #endregion   
 
     #region UNITY_METHODS
@@ -25,19 +26,35 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Start() {
-        _isJumping = false;    
+        _isJumping = false; 
+        _direction = 1;   
     }
 
     private void Update() {
         //Obteniendo un valor entre -1 y 1 (continuo)...
         _horizontalAxisValue = Input.GetAxis("Horizontal");
+
+        if(_horizontalAxisValue != 0f){
+            _myAnimator.SetBool("Running", true);
+            _myAnimator.SetFloat("RunningSpeed", _horizontalAxisValue);
+        }            
+        else{
+            _myAnimator.SetBool("Running", false);
+            _myAnimator.SetFloat("IdleDirection", _direction);
+        }
+
         //Obtenemos la tecla espacio
         if(Input.GetKeyDown(KeyCode.Space) && !_isJumping)
         {
             _isJumping = true;
-            _myAnimator.SetBool("Running", true);
+            _myAnimator.SetBool("Jumping", true);
             _myRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);    
         }
+
+        if(_horizontalAxisValue > 0)
+            _direction = 1;
+        else if(_horizontalAxisValue  < 0)
+            _direction = -1;
     }
 
     private void FixedUpdate() {
@@ -48,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.CompareTag("Platform"))
         {
             _isJumping = false;
-            _myAnimator.SetBool("Running", false);
+            _myAnimator.SetBool("Jumping", false);
         }
     }
     #endregion
