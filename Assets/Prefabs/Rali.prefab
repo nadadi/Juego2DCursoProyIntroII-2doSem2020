@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 715345068}
   - component: {fileID: 715345071}
   - component: {fileID: 4123256866251009108}
+  - component: {fileID: 3761228783600132801}
+  - component: {fileID: 1274853243663154526}
   m_Layer: 0
   m_Name: Rali
   m_TagString: Player
@@ -134,3 +136,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 15
+  jumpForce: 100
+  _isJumping: 0
+--- !u!114 &3761228783600132801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3573106525303796406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b42dd9b0ec55548f397c79e853c13a5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+--- !u!114 &1274853243663154526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3573106525303796406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4db5e32e66a4f709cfaf930786859c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  currentHealth: 0
